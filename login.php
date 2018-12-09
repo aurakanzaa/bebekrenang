@@ -33,6 +33,13 @@
         <label for="#{label}">Password</label>
         <div class="bar"></div>
       </div>
+      <?php
+            if(isset($_GET['pesan'])){
+              if($_GET['pesan']=='gagal'){
+                echo "<div class= 'alert alert-danger' role='alert'>Failure to Login</div>";
+              }
+            }
+          ?>
       <div class="button-container">
         <button  href="" name="login" type="submit"><span>Go</span></button>
       </div>

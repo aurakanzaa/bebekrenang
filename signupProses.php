@@ -4,7 +4,7 @@ if(isset($_POST['register'])){
 		$full_name=$_POST['full_name'];
 		$username=$_POST['username'];
 		$password=$_POST['password'];
-		$data=$koneksi->query("INSERT INTO signup values('$full_name','$username','$password', '','','','','','','','','','')");
+		$data=$koneksi->query("INSERT INTO signup (full_name,username,password)values('$full_name','$username','$password')");
 
 		if($data){
 			// echo "Berhasil Input Data";

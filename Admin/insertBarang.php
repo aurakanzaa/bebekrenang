@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <?php
+    session_start();
     include'koding/top.php';
     ?>
   </head>
@@ -19,13 +20,14 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper site-min-height">
-          	<h3><i class="fa fa-angle-right"></i> Insert Barang</h3>
+          	<h3><i class="fa fa-angle-right"></i> Insert Data</h3>
           	<div class="row mt">
           		<div class="col-lg-12">
           		    <!-- BASIC FORM ELELEMNTS -->
             <div class="row mt">
               <div class="col-lg-12">
                   <div class="form-panel">
+                    <h4 class="mb"><i class="fa fa-angle-right"></i> Form Barang</h4>
                       <form class="form-horizontal style-form" method="post" action="prosesinsertbarang.php" enctype="multipart/form-data">
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label">Judul Film</label>
@@ -108,37 +110,3 @@
 
   </body>
 </html>
-
-<!-- PROSES INSERT BARANG -->
-<!-- <?php
-  if(!empty($_POST['tambah']))
-  {
-    include'koneksi.php';
-
-    if($koneksi->connect_error)
-    {
-      die('Coba periksa koneksi anda');
-    }
-
-    $kd = $_POST['kodeapotek'];
-    $nama = $_POST['namaapotek'];
-    $alamat = $_POST['alamat'];
-    $tlp = $_POST['tlp'];
-    $queryinsert = $mysqli->query("INSERT INTO apotek (kode_apotek, nama_apotek, alamat, tlp) VALUES ('$kd', '$nama', '$alamat', $tlp) ");
-
-    echo $mysqli->query($queryinsert);
-    if($queryinsert == TRUE){
-      echo "<script>
-        alert('Data Berhasil Ditambahkan Di Tabel Apotek');
-        document.location = 'lapapotek.php';
-      </script>";
-    }else{
-    echo "    
-      <script>
-        alert('Maaf Data Gagal Dimasukkan');
-        document.location = 'formapotek.php';
-      </script>";
-    }
-  }
-?>
- -->

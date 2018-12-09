@@ -1,7 +1,7 @@
 <?php
 session_start();
 session_destroy();
-include'index.php';
+include'login.php';
 ?>
 
 

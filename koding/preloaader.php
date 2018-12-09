@@ -28,15 +28,18 @@ include 'koneksi.php';
                             <ul class="nav nav-pills navbar-right">
                                 
                                 <li><a href="cart.php">Cart</a></li>
-                                <li><a href="#">Checkout</a></li>
-                                <?php if (empty($_SESSION['username'])) {
-                                      ?>
+                                <li><a href="rincian.php">Checkout</a></li>
+                                    <?php if (empty($_SESSION['username'])) 
+                                            {
+                                    ?>
                                 <li><a href="login.php"><i class="pe-7s-lock"></i>Login/Register</a></li>
-                                <?php } else { $username=$_SESSION['username'];
-                           $cek = $koneksi->query("select * from signup where username='$username' ");
-                            $comm = $cek->fetch_assoc();
-                                    ?> <li><a href="profile.php"><i class="pe-7s-lock"></i><?php echo $comm['full_name'] ;?></a></li>
-                                    <li><a href="logout.php">Logout</a></li>
+                                
+                                    <?php } else { $username=$_SESSION['username'];
+                                        $cek = $koneksi->query("select * from signup where username='$username' ");
+                                        $comm = $cek->fetch_assoc();
+                                    ?> 
+                                <li><a href="profile.php"><i class="pe-7s-lock"></i><?php echo $comm['full_name'] ;?></a></li>
+                                <li><a href="logout.php">Logout</a></li>
                                     <?php } ?>
 
 
@@ -71,7 +74,7 @@ include 'koneksi.php';
                         <ul class="nav navbar-nav navbar-right cart-menu">
                         <li><a href="#" class="search-btn"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                         <?php if(!empty($_SESSION['username'])) { ?>
-                        <li><a href="#"><span> Cart Rp <?php echo $comm['uang']; ?>&nbsp;</span> <span class="shoping-cart">0</span></a></li>
+                        <li><a href="#"><span> Cart Rp <?php echo $comm['uang']; ?>&nbsp;</span> <span class="shoping-cart">+</span></a></li>
                         <?php }?>
                     </ul>
                     </div><!-- /.navbar-collapse -->

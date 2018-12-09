@@ -26,6 +26,7 @@
               <div class="row mt">
                   <div class="col-md-12">
                       <div class="content-panel">
+                        <h4 class="mb"><i class="fa fa-angle-right"></i> Data Customer</h4>
                           <table class="table table-striped table-advance table-hover">
                             
                             <hr>
@@ -46,32 +47,54 @@
                               </thead>
                               <tbody>
                                 <?php
-                                    include'koneksi.php';
+                                    include 'koneksi.php';
                                     $hasil = $koneksi->query("SELECT full_name,username,email,hp,jenis_kelamin,tgl_lahir,alamat,kodepos,kota,hp_lain FROM signup");
-                                    $baris = $hasil->fetch_all();
-
-                                    for($b=0; $b<count($baris); $b++)
-                                    {
-                                      echo "<tr>";
-                                      echo "<td align = 'center'>";
-                                      echo $b+1;
+                                    $a=0;
+                                    while($baris=$hasil->fetch_assoc()) {
+                                      $a=$a+1;
+                                      $up = $baris['username'];
+                                      $del = $up;
+                                      echo "<td>";
+                                      echo $a;
                                       echo "</td>";
-                                      for($k=0; $k<count($baris[$b]); $k++)
-                                      {
-                                        echo "<td> ";
+                                      echo "<td>";
+                                      echo $baris['full_name'];
+                                      echo "</td>";
+                                      echo "<td>";
+                                      echo $baris['username'];
+                                      echo "</td>";
+                                      echo "<td>";
+                                      echo $baris['email'];
+                                      echo "</td>";
+                                      echo "<td>";
+                                      echo $baris['hp'];
+                                      echo "</td>";
+                                      echo "<td>";
+                                      echo $baris['jenis_kelamin'];
+                                      echo "</td>";
+                                      echo "<td>";
+                                      echo $baris['tgl_lahir'];
+                                      echo "</td>";
+                                      echo "<td>";
+                                      echo $baris['alamat'];
+                                      echo "</td>";
+                                      echo "<td>";
+                                      echo $baris['kodepos'];
+                                      echo "</td>";
+                                      echo "<td>";
+                                      echo $baris['kota'];
+                                      echo "</td>";
+                                      echo "<td>";
+                                      echo $baris['hp_lain'];
+                                      echo "</td>";
+                                
+                                      
+                                  
 
-                                        echo $baris[$b][$k];
-                                        if($k == (count($baris[$b]) - 1 ))
-                                        {
-                                          echo "<br />";
-                                        }
-                                        echo "</td>";
-                                      }
-                                      $n = $baris[$b][0];
-                                      ?>
+                                    ?>
                                   <td>
-                                      <a href="editCust.php?username=<?php echo $n; ?>" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                                      <a href="hapuscust.php" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                                      <a href="editcust.php?username=<?php echo $up;?>" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                                      <a href="hapuscust.php?username=<?php echo $del;?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                                       <!-- <a href ='editcust.php?id=$n'> Edit </a> / <a href ='hapuscust.php?id=$n'> Hapus </a> -->
                                   </td></tr>
                                    <?php   
@@ -88,18 +111,7 @@
 
       <!--main content end-->
 
-      <!--footer start-->
-      <footer class="site-footer">
-          <div class="text-center">
-              Aura Kanza C | TI - 2F | 1541180188
-              <a href="blank.html#" class="go-top">
-                  <i class="fa fa-angle-up"></i>
-              </a>
-          </div>
-      </footer>
-      <!--footer end-->
-  </section>
-
+      
   <?php
     include'koding/bawah.php';
   ?>

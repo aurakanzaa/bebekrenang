@@ -20,5 +20,7 @@ if(mysqli_num_rows($login)==1){
 		header('location:index.php');
 		
 	}
+}else{
+	header('location:login.php?pesan=gagal');
 }
 ?>

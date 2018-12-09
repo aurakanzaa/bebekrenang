@@ -22,7 +22,7 @@
 			if($queryinsert == TRUE){
 				echo "<script>
 					alert('Data Berhasil Ditambahkan ');
-					document.location = 'index.php';
+					document.location = 'laporanBarang.php';
 				</script>";
 			}else{
 				echo "<script>

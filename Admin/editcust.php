@@ -37,19 +37,14 @@ $baris = $query ->fetch_assoc();
             <div class="row mt">
               <div class="col-lg-12">
                   <div class="form-panel">
-                      <form class="form-horizontal style-form" action="datacust.php" method="post" >
+                      <form class="form-horizontal style-form" action="" method="post" >
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label">Nama</label>
                               <div class="col-sm-4">
                                   <input type="text" class="form-control" name="full_name" value="<?php echo $baris['full_name']; ?>">
                               </div>
                            </div>
-                           <div class="form-group">
-                              <label class="col-sm-2 col-sm-2 control-label">Username</label>
-                              <div class="col-sm-4">
-                                  <input type="text" class="form-control" name="full_name" value="<?php echo $baris['username']; ?>">
-                              </div>
-                           </div>
+                           
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label">Email</label>
                               <div class="col-sm-4">
@@ -67,8 +62,8 @@ $baris = $query ->fetch_assoc();
                               <div class="col-sm-5">
                                   <div class="btn-group">
                                       <select name="jenis_kelamin" >
-                                        <option value="admin">Laki-Laki</option>
-                                        <option value="admin">Perempuan</option>
+                                        <option value="Laki-Laki">Laki-Laki</option>
+                                        <option value="Perempuan">Perempuan</option>
                                       </select>
                                   </div>
                               </div>
@@ -100,7 +95,7 @@ $baris = $query ->fetch_assoc();
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label">No Lain</label>
                               <div class="col-sm-4">
-                                  <input type="text" class="form-control" name="no_lain" value="<?php echo $baris['hp_lain']; ?>">
+                                  <input type="text" class="form-control" name="hplain" value="<?php echo $baris['hp_lain']; ?>">
                               </div>
                           </div>
                           <div class="" align="right"> <input type="submit" class="btn btn-round btn-primary btn-lg" name="save">
@@ -117,17 +112,7 @@ $baris = $query ->fetch_assoc();
       </section><!-- /MAIN CONTENT -->
 
       <!--main content end-->
-      <!--footer start-->
-      <footer class="site-footer">
-          <div class="text-center">
-              Aura Kanza C | TI - 2F | 1541180188
-              <a href="blank.html#" class="go-top">
-                  <i class="fa fa-angle-up"></i>
-              </a>
-          </div>
-      </footer>
-      <!--footer end-->
-  </section>
+  
 
   <?php
     include'koding/bawah.php';
@@ -147,9 +132,14 @@ $baris = $query ->fetch_assoc();
 
 
 <?php
+
+$user = $baris['username'];
+$query = $koneksi->query("SELECT * FROM signup WHERE username='$user'");
+$baris = $query ->fetch_assoc();
+
 if(isset($_POST['save'])) {
     $full_name = $_POST['full_name'];
-    $user = $_POST['username'];
+    
     $email = $_POST['email'];
     $hp = $_POST['hp'];
     $jenis_kelamin = $_POST['jenis_kelamin'];
@@ -157,18 +147,20 @@ if(isset($_POST['save'])) {
     $alamat = $_POST['alamat'];
     $kodepos = $_POST['kodepos'];
     $kota = $_POST['kota'];
-    $hp_lain = $_POST['hp_lain'];
+    $hp_lain = $_POST['hplain'];
 
 
     
-    $update = $koneksi->query("UPDATE signup SET full_name='$full_name', username='$user', password='',email='$email',hp='$hp',jenis_kelamin='$jenis_kelamin',tgl_lahir='$tgl_lahir',alamat='$alamat', kodepos='$kodepos',kota='$kota', hp_lain='$hp_lain' WHERE username='$user'") or die($koneksi->error);
+    $update = $koneksi->query("UPDATE signup SET full_name='$full_name', username='$user', email='$email',hp='$hp',jenis_kelamin='$jenis_kelamin',tgl_lahir='$tgl_lahir',alamat='$alamat', kodepos='$kodepos',kota='$kota', hp_lain='$hp_lain' WHERE username='$user'") or die($koneksi->error);
+
+   
       
     echo $koneksi->query($update);
     if($update == TRUE){
       echo "<script>
-        alert('Data Customer Berhasil Diupdate ');
+        alert('Data Customer Berhasil Diupdate '); 
         document.location = 'datacust.php';
-      </script>";
+           </script>";
     }else{
     echo "    
       <script>
@@ -179,5 +171,6 @@ if(isset($_POST['save'])) {
 
 }
 ?>
+
 
 

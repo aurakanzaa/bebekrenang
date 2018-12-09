@@ -1,8 +1,9 @@
 <?php
-include 'koneksi.php';
 include 'koding/top.php';
-
+include 'koding/preloaader.php';
 ?>
+
+
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
@@ -30,11 +31,11 @@ include 'koding/top.php';
 </head>
 <body>
  <?php
-        include 'koding/preloaader.php';
-        $id=$_SESSION['username'];
-$query = $koneksi->query("SELECT * FROM signup WHERE username='$id'");
-$check = $query->fetch_assoc();
-        ?>
+ include'koneksi.php';
+ $id=$_SESSION['username'];
+ $query = $koneksi->query("SELECT * FROM signup WHERE username='$id'");
+ $baris = $query->fetch_assoc();
+?>
 
 <div class="banner page-head">
 	
@@ -70,53 +71,39 @@ $check = $query->fetch_assoc();
 								  <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Personal info</a></li>
 								</ul>
 								<!-- PERSONAL INFO -->
-								<div id="myTabContent" class="tab-content">
-									<div role="tabpanel" class="tabs-para tab-pane fade in active" id="home" aria-labelledby="home-tab">
-										<div class="profile-gd">
-										<form action="prosesProfile.php" method="post" role="form">
-											<div class="tab-for-sett">				
-												<h5>nama</h5>													
-													<input type="text" value="<?php echo $check['full_name'] ?>" name="full_name"  required="">
-												<h5>Email </h5>													
-													<input type="text" value="<?php echo $check['email'] ?>" name="email" required="">
-												<h5>no hp</h5>													
-													<input type="text" value="<?php echo $check['hp'] ?>" name="hp"  required="" maxlength="12">
-												<h5>jenis kelamin</h5>
-												<div class="swit-radio-thre">								
-													<div class="check_box_thre"> 
-														<div class="radio_thre"> 
-															<label><input type="radio" name="jenis_kelamin" value="perempuan" checked=""><i></i>P</label> 
-														</div>
-													</div>
-													<div class="check_box_thre"> 
-														<div class="radio_thre"> 
-															<label><input type="radio" name="jenis_kelamin" value="laki-laki"><i></i>L</label> 
-														</div>
-													</div>	
-													<div class="clearfix"></div>	
-												</div>
-												<h5>tanggal lahir</h5>	
-													<input type="date" name="<?php echo $check['tgl_lahir'] ?>" ><br>
-												
-											</div>
-											<div class="tab-for-sett">
-												<h5>Alamat</h5>														
-														<input type="text" value="<?php echo $check['alamat'] ?>" name="alamat">
-												<h5>Kode Pos</h5>													
-														<input type="text" value="<?php echo $check['kodepos'] ?>" name="kodepos" maxlength="5">	
-												<h5>Kota</h5>													
-														<input type="text" value="<?php echo $check['kota'] ?>" name="kota">
-												<h5>No Telp Lainnya</h5>													
-														<input type="text" value="<?php echo $check['hp_lain'] ?>" name="hp_lain" maxlength="12">	
-
-												 <input  type="submit" value="SAVE" name="save">
-											</div>	
-											<div class="clearfix"></div>
+									<div id="myTabContent" class="tab-content">
+										<div role="tabpanel" class="tabs-para tab-pane fade in active" id="home" aria-labelledby="home-tab">
+											<div class="profile-gd">
+												<ul class="pro-left">
+													<li>Nama</li>
+													<li>Email</li>
+													<li>No Hp</li>
+													<li>Jenis Kelamin</li>
+													<li>Tgl Lahir</li>
+													<li>Alamat</li>
+													<li>Kode Pos</li>
+													<li>Kota</li>
+													<li>Telp Lain</li>
+												</ul>
+												<ul class="pro-right">
 											
-										</form>
+													<li>: <?php echo $baris['full_name']; ?> <a href="editprofile.php" > Edit</a></li> 
+													<li>: <?php echo $baris['email']; ?></li>
+													<li>: <?php echo $baris['hp']; ?></li>
+													<li>: <?php echo $baris['jenis_kelamin']; ?></li>
+													<li>: <?php echo $baris['tgl_lahir']; ?></li>
+													<li>: <?php echo $baris['alamat']; ?></li>
+													<li>: <?php echo $baris['kodepos']; ?></li>
+													<li>: <?php echo $baris['kota']; ?></li>
+													<li>: <?php echo $baris['hp_lain']; ?></li>
+
+												</ul>
+												<div class="clearfix"></div>
+											</div>
 										</div>
+									
+										
 									</div>
-								</div>
 							</div>
 	</div>
 </div>

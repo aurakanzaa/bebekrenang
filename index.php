@@ -22,6 +22,7 @@
 		
 		<?php
             include 'koding/top.php';
+            include 'koneksi.php';
         ?>
         
 
@@ -182,82 +183,32 @@
                     </div>
                 </div>
                 <div class="row">
+                <?php
+                    $tampil=$koneksi->query("SELECT * FROM barang where tipe=1");
+                    while ($baris=$tampil->fetch_assoc()) {
+                ?>
                     <div class="col-md-3 col-sm-6 wow fadeInLeft animated" data-wow-delay="0.2s">
                         <div class="product-item">
-                            <img src="images/product/1.png" class="img-responsive" width="255" height="322" alt="">
+                    <img src="images/product/<?php echo $baris['image'] ?>" class="img-responsive" width="255" height="322" alt="">
                             <div class="product-hover">
                                 <div class="product-meta">
                                     <a href="wishlist.php"><i class="pe-7s-like"></i></a>
                                     <!-- <a href="#"><i class="pe-7s-shuffle"></i></a>
                                     <a href="#"><i class="pe-7s-clock"></i></a> -->
-                                    <a href="#"><i class="pe-7s-cart"></i>Add to Cart</a>
+                                    <a href="shop.php">Buy</a>
                                 </div>
                             </div>
                             <div class="product-title">
                                 <a href="#">
-                                    <h3>Ant Man</h3>
-                                    <span>40.000</span>
+                                    <h3><?php echo $baris['judul'] ?></h3>
+                                    <span><?php echo $baris['harga']?></span>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 wow fadeInLeft animated" data-wow-delay="0.4s">
-                        <div class="product-item">
-                            <img src="images/product/20.png" class="img-responsive" width="255" height="322" alt="">
-                            <div class="product-hover">
-                                <div class="product-meta">
-                                    <a href="wishlist.php"><i class="pe-7s-like"></i></a>
-                                    <!-- <a href="#"><i class="pe-7s-shuffle"></i></a>
-                                    <a href="#"><i class="pe-7s-clock"></i></a> -->
-                                    <a href="#"><i class="pe-7s-cart"></i>Add to Cart</a>
-                                </div>
-                            </div>
-                            <div class="product-title">
-                                <a href="#">
-                                    <h3>Tarzan</h3>
-                                    <span>40.000</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 wow fadeInLeft animated" data-wow-delay="0.6s">
-                        <div class="product-item">
-                            <img src="images/product/3.png" class="img-responsive" width="255" height="322" alt="">
-                            <div class="product-hover">
-                                <div class="product-meta">
-                                    <a href="wishlist.php"><i class="pe-7s-like"></i></a>
-                                    <!-- <a href="#"><i class="pe-7s-shuffle"></i></a>
-                                    <a href="#"><i class="pe-7s-clock"></i></a> -->
-                                    <a href="#"><i class="pe-7s-cart"></i>Add to Cart</a>
-                                </div>
-                            </div>
-                            <div class="product-title">
-                                <a href="#">
-                                    <h3>Batman v ..</h3>
-                                    <span>40.000</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 wow fadeInLeft animated" data-wow-delay="0.8s">
-                        <div class="product-item">
-                            <img src="images/product/10.png" class="img-responsive" width="255" height="322" alt="">
-                            <div class="product-hover">
-                                <div class="product-meta">
-                                    <a href="wishlist.php"><i class="pe-7s-like"></i></a>
-                                    <!-- <a href="#"><i class="pe-7s-shuffle"></i></a>
-                                    <a href="#"><i class="pe-7s-clock"></i></a> -->
-                                    <a href="#"><i class="pe-7s-cart"></i>Add to Cart</a>
-                                </div>
-                            </div>
-                            <div class="product-title">
-                                <a href="#">
-                                    <h3>Dr Strange</h3>
-                                    <span>40.000</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                        }
+                    ?>
                 </div>
             </div>
         </section>
@@ -268,7 +219,7 @@
                 <div class="row">
                     <div class="col-md-12 wow fadeInDown animated ">
                         <h1>END OF SEASON SALE</h1>
-                        <h2>Up to 20% off Cartoon</h2>
+                        <h2>Free Shipping </h2>
                     </div>
                 </div>
             </div>
@@ -277,85 +228,43 @@
 <!-- BEST SELLER -->
         <section class="best-seller-section">
             <div class="container">
+
                 <div class="row">
                     <div class="col-md-12">
+
                         <div class="titie-section wow fadeInDown animated ">
                             <h1>BEST SELLERS</h1>
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
+                 <?php
+                    $tampil=$koneksi->query("SELECT * FROM barang where best=1");
+                    while ($baris=$tampil->fetch_assoc()) {    
+                ?>
                     <div class="col-md-3 col-sm-6 wow fadeInDown animated" data-wow-delay="0.2s">
                         <div class="product-item">
-                            <img src="images/product/19.png" class="img-responsive" width="255" height="322" alt="">
+                            <img src="images/product/<?php echo $baris['image'] ?>" class="img-responsive" width="255" height="322" alt="">
                             <div class="product-hover">
                                 <div class="product-meta">
                                     <a href="wishlist.php"><i class="pe-7s-like"></i></a>
-                                    <a href="#"><i class="pe-7s-cart"></i>Add to Cart</a>
+                                    <a href="shop.php">Buy</a>
                                 </div>
                             </div>
                             <div class="product-title">
                                 <a href="#">
-                                    <h3>suicide squad</h3>
-                                    <span>40.000</span>
+                                    <h3><?php echo $baris['judul'] ?></h3>
+                                    <span><?php echo $baris['harga']?></span>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 wow fadeInDown animated" data-wow-delay="0.4s">
-                        <div class="product-item">
-                            <img src="images//product/2.png" class="img-responsive" width="255" height="322" alt="">
-                            <div class="product-hover">
-                                <div class="product-meta">
-                                    <a href="wishlist.php"><i class="pe-7s-like"></i></a>
-                                    <a href="#"><i class="pe-7s-cart"></i>Add to Cart</a>
-                                </div>
-                            </div>
-                            <div class="product-title">
-                                <a href="#">
-                                    <h3>Avengers</h3>
-                                    <span>40.000</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 wow fadeInDown animated" data-wow-delay="0.6s">
-                        <div class="product-item">
-                            <img src="images/product/16.png" class="img-responsive" width="255" height="322" alt="">
-                            <div class="product-hover">
-                                <div class="product-meta">
-                                    <a href="wishlist.php"><i class="pe-7s-like"></i></a>
-                                    <a href="#"><i class="pe-7s-cart"></i>Add to Cart</a>
-                                </div>
-                            </div>
-                            <div class="product-title">
-                                <a href="#">
-                                    <h3>Moana</h3>
-                                    <span>40.000</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 wow fadeInDown animated" data-wow-delay="0.8s">
-                        <div class="product-item">
-                            <img src="images/product/14.png" class="img-responsive" width="255" height="322" alt="">
-                            <div class="product-hover">
-                                <div class="product-meta">
-                                    <a href="wishlist.php"><i class="pe-7s-like"></i></a>
-                                    <a href="#"><i class="pe-7s-shuffle"></i></a>
-                                    <a href="#"><i class="pe-7s-clock"></i></a>
-                                    <a href="#"><i class="pe-7s-cart"></i>Add to Cart</a>
-                                </div>
-                            </div>
-                            <div class="product-title">
-                                <a href="#">
-                                    <h3>Kungfu panda 3</h3>
-                                    <span>40.000</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                        }
+                    ?>  
                 </div>
+                
             </div>
         </section>
 <!-- END BEST SELLER -->
